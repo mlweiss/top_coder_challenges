@@ -24,6 +24,9 @@ struct Customer {
     var email =  String()
 }
 
+
+println(john.name);
+
 /**
 
 R3 – Create a “randomCustomer” function that returns a tuple. Add 3
@@ -33,6 +36,17 @@ from the dictionary. (Hint: you can use arc4random_uniform to
 randomly select a value.)
 **/
 // implement code for R3 below
+
+var john = Customer(name: "John", email: "john@email.com");
+var katie = Customer(name: "Katie", email: "katie@email.com");
+var nate = Customer(name: "Nate", email: "nate@email.com");
+
+var custDict = [john.name: john.email, katie.name: katie.email, nate.name: nate.email];
+
+func randomCustomer(customerDictionary:Dictionary<String, String>) -> (name: String, email: String) {
+    let randIndex:Int = Int(arc4random_uniform(3))
+    return (Array(customerDictionary.keys)[randIndex], Array(customerDictionary.values)[randIndex])
+}
 
 
 /**
