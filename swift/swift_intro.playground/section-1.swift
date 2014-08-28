@@ -19,7 +19,10 @@ R2 – Create a “Customer” struct with a “name” and “email” property
 **/
 // implement code for R2 below
 
-
+struct Customer {
+    var name =  String()
+    var email =  String()
+}
 
 /**
 
