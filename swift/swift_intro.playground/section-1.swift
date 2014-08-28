@@ -11,7 +11,7 @@ values: book, CD, software
 **/
 // implement code for R1 below
 
-
+let types = ["book", "CD", "software"]
 
 /**
 
