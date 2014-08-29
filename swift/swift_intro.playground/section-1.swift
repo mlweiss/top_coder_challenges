@@ -116,7 +116,7 @@ let huck = Product(productName: "Huckleberry Finn", productPrice: 9.99, productD
 let cold = Product(productName: "In Cold Blood", productPrice: 9.99, productDiscount: 0.3);
 let scar = Product(productName: "The Scarlett Letter", productPrice: 9.99, productDiscount: 0.4);
 
-let products = [moby, bell, huck, cold, scar];
+var products = [moby, bell, huck, cold, scar];
 
 
 
@@ -158,13 +158,15 @@ class Cart<T> {
     var customerName = String();
     var customerEmail = String();
     var items = [T]();
-    var itemCount = Int();
-    var promoCode:String? = nil
+    var itemCount : Int {
+        return items.count
+    }
+    var promoCode:String?
+    = nil
     
     init(name:String, email:String){
-        self.customerName = name;
-        self.customerEmail = email;
-        self.itemCount = items.count;
+        customerName = name;
+        customerEmail = email;
     }
     
     func add(newItem: T) {
@@ -174,7 +176,7 @@ class Cart<T> {
     func clear() {
         items.removeAll();
     }
-    
+
     func remove(oldItemIndex: Int) {
         items.removeAtIndex(oldItemIndex);
     }
@@ -187,26 +189,26 @@ class Cart<T> {
     }
     
     func getCartStatus() -> (String) {
-        switch items.count {
+        switch self.items.count {
             case 0:
                 return "You have no items in your cart"
             case 1, 2, 3:
-                return "You have \(items.count) item(s) in your cart"
+                return "You have \(self.items.count) item(s) in your cart"
             default:
                 return "You are an awesome customer!!"
             }
     }
 }
-//
-//var newCart = Cart<String>(name:"myCart", email: "me");
-//newCart.getCartStatus()
-//newCart.add("CD")
-//
-//assert (newCart.getCartStatus() == "You have 1 item(s) in your cart")
-//
-//newCart.getCartStatus()
-//newCart.promoCode = "50% off!!"
-//newCart.getPromoCodeDisplay()
+
+var newCart = Cart<Product>(name:"myCart", email: "me");
+newCart.getCartStatus()
+newCart.add(moby)
+newCart.items[0]
+assert (newCart.getCartStatus() == "You have 1 item(s) in your cart")
+
+newCart.getCartStatus()
+newCart.promoCode = "50% off!!"
+newCart.getPromoCodeDisplay()
 //
 //newCart.add("CD")
 //newCart.getCartStatus()
@@ -251,7 +253,18 @@ then println the getPromoCodeDisplay again (should display “Your promo code
 is 1234.”).
 **/
 // implement code for R8 below
+products
+for index in 0...4 {
+    if index != 2 {
+        cart.add(products[index]);
+    }
+}
 
+println(cart.itemCount)
+println(cart.getCartStatus())
+println(cart.getPromoCodeDisplay())
+cart.promoCode = "1234"
+println(cart.getPromoCodeDisplay())
 
 
 /**
