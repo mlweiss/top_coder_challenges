@@ -71,7 +71,33 @@ return the interpolated string “This product is on sale. It was
 **/
 // implement code for R4 below
 
+let randomIndex = Int(arc4random_uniform(UInt32(types.count)))
 
+class Product {
+    var id = Int();
+    var name = String();
+    let type = types[Int(arc4random_uniform(UInt32(types.count)))];
+    var price = Double();
+    var discount = Double();
+    var saleStatus = String();
+    
+    init(productName: String, productPrice: Double, productDiscount: Double = 0) {
+        self.id = Int(arc4random_uniform(10_000));
+        self.name = productName;
+        self.price = productPrice;
+        self.discount = productDiscount;
+    }
+    
+    func getSaleStatus() -> String {
+        if self.discount != 0 {
+            self.saleStatus = "This product is on sale. It was \(self.price) but with a discount you only pay \(self.price - self.price * self.discount)"
+        }
+        else {
+            self.saleStatus = "Sorry. This product is not on sale."
+        }
+        return self.saleStatus
+    }
+}
 
 /**
 
@@ -84,6 +110,13 @@ After adding the items to the array, iterate the collection and println the
 **/
 // implement code for R5 below
 
+var moby = Product(productName: "Moby Dick", productPrice: 9.99, productDiscount: 0);
+var bell = Product(productName: "For Whom the Bell Tolls", productPrice: 9.99, productDiscount: 0.1);
+var huck = Product(productName: "Huckleberry Finn", productPrice: 9.99, productDiscount: 0.2);
+var cold = Product(productName: "In Cold Blood", productPrice: 9.99, productDiscount: 0.3);
+var scar = Product(productName: "The Scarlett Letter", productPrice: 9.99, productDiscount: 0.4);
+
+var product:[Product] = [moby, bell, huck, cold, scar]
 
 
 /**
