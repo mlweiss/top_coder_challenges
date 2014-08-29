@@ -193,7 +193,7 @@ class Cart<T> {
             case 0:
                 return "You have no items in your cart"
             case 1, 2, 3:
-                return "You have \(self.items.count) item(s) in your cart"
+                return "You have \(self.items.count) items in your cart"
             default:
                 return "You are an awesome customer!!"
             }
@@ -204,7 +204,7 @@ var newCart = Cart<Product>(name:"myCart", email: "me");
 newCart.getCartStatus()
 newCart.add(moby)
 newCart.items[0]
-assert (newCart.getCartStatus() == "You have 1 item(s) in your cart")
+assert (newCart.getCartStatus() == "You have 1 items in your cart")
 
 newCart.getCartStatus()
 newCart.promoCode = "50% off!!"
@@ -275,3 +275,7 @@ in your cart.”
 // implement code for R9 below
 
  
+cart.remove(0)
+println(cart.itemCount)
+println(cart.getCartStatus())
+
