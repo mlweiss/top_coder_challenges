@@ -154,8 +154,74 @@ awesome customer!!”
 **/
 // implement code for R6 below
 
-
-
+class Cart<T> {
+    var customerName = String();
+    var customerEmail = String();
+    var items = [T]();
+    var itemCount = Int();
+    var promoCode:String? = nil
+    
+    init(name:String, email:String){
+        self.customerName = name;
+        self.customerEmail = email;
+        self.itemCount = items.count;
+    }
+    
+    func add(newItem: T) {
+        items.append(newItem);
+    }
+    
+    func clear() {
+        items.removeAll();
+    }
+    
+    func remove(oldItemIndex: Int) {
+        items.removeAtIndex(oldItemIndex);
+    }
+    
+    func getPromoCodeDisplay() -> (String){
+        if promoCode != nil {
+            return "Your promo code is \(self.promoCode!)."
+        }
+        return "You do not have a promo code."
+    }
+    
+    func getCartStatus() -> (String) {
+        switch items.count {
+            case 0:
+                return "You have no items in your cart"
+            case 1, 2, 3:
+                return "You have \(items.count) item(s) in your cart"
+            default:
+                return "You are an awesome customer!!"
+            }
+    }
+}
+//
+//var newCart = Cart<String>(name:"myCart", email: "me");
+//newCart.getCartStatus()
+//newCart.add("CD")
+//
+//assert (newCart.getCartStatus() == "You have 1 item(s) in your cart")
+//
+//newCart.getCartStatus()
+//newCart.promoCode = "50% off!!"
+//newCart.getPromoCodeDisplay()
+//
+//newCart.add("CD")
+//newCart.getCartStatus()
+//newCart.add("CD")
+//
+//newCart.getCartStatus()
+//
+//newCart.add("CD")
+//newCart.getCartStatus()
+//
+//newCart.remove(2)
+//newCart.getCartStatus()
+//
+//newCart.clear()
+//newCart.getCartStatus()
 /**
 
 R7 – Create a “customer” object by calling the “randomCustomer” function.
@@ -166,6 +232,12 @@ itemCount (should be 0). Println the getCartStatus which should display
 **/
 // implement code for R7 below
 
+var customer = randomCustomer(custDict)
+var cart = Cart<Product>(name: customer.name, email: customer.email)
+
+println(customer.name)
+println(cart.itemCount)
+println(cart.getCartStatus())
 
 
 /**
