@@ -110,14 +110,20 @@ After adding the items to the array, iterate the collection and println the
 **/
 // implement code for R5 below
 
-var moby = Product(productName: "Moby Dick", productPrice: 9.99, productDiscount: 0);
-var bell = Product(productName: "For Whom the Bell Tolls", productPrice: 9.99, productDiscount: 0.1);
-var huck = Product(productName: "Huckleberry Finn", productPrice: 9.99, productDiscount: 0.2);
-var cold = Product(productName: "In Cold Blood", productPrice: 9.99, productDiscount: 0.3);
-var scar = Product(productName: "The Scarlett Letter", productPrice: 9.99, productDiscount: 0.4);
+let moby = Product(productName: "Moby Dick", productPrice: 9.99, productDiscount: 0);
+let bell = Product(productName: "For Whom the Bell Tolls", productPrice: 9.99, productDiscount: 0.1);
+let huck = Product(productName: "Huckleberry Finn", productPrice: 9.99, productDiscount: 0.2);
+let cold = Product(productName: "In Cold Blood", productPrice: 9.99, productDiscount: 0.3);
+let scar = Product(productName: "The Scarlett Letter", productPrice: 9.99, productDiscount: 0.4);
 
-var product:[Product] = [moby, bell, huck, cold, scar]
+let products = [moby, bell, huck, cold, scar];
 
+
+
+
+for item in products {
+    println(item.getSaleStatus())
+}
 
 /**
 
