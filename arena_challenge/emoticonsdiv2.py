@@ -1,4 +1,37 @@
 
+# EmoticonsDiv2
+# You are very happy because you advanced to the next round of a very important programming contest. You want your best friend to know how happy you are. Therefore, you are going to send him a lot of smile emoticons. You are given an int smiles: the exact number of emoticons you want to send.
+
+# You have already typed one emoticon into the chat. Then, you realized that typing is slow. Instead, you will produce the remaining emoticons using copy and paste.
+
+# You can only do two different operations:
+
+# Copy all the emoticons you currently have into the clipboard. Paste all emoticons from the clipboard.
+
+# Each operation takes precisely one second. Copying replaces the old content of the clipboard. Pasting does not empty the clipboard. Note that you are not allowed to copy just a part of the emoticons you already have.
+
+# Return the smallest number of seconds in which you can turn the one initial emoticon into smiles emoticons.
+
+# Example #1
+# 2
+# Returns: 2
+
+# Example #2
+# 6
+# Returns: 5
+
+# Example #3
+# 11
+# Returns: 11
+
+# Example #4
+# 16
+# Returns: 8
+
+# Example #5
+# 1000
+# Returns: 21
+
 def prime_factorization(number, factors):
     
     possible_factors = range(2,1000)
