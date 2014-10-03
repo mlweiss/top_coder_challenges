@@ -34,17 +34,18 @@
 
 def prime_factorization(number, factors):
     
-    possible_factors = range(2,1000)
     number_to_factor = number
     
     if number_to_factor == 1:
         return factors
     
+    possible_factors = range(2, number_to_factor/2) # (very) rough linear approx. to square root
+            
+    
     for possible_factor in possible_factors:
         times_appearing = 0    
         
-        if number_to_factor % possible_factor == 0 and \
-            possible_factor <= number_to_factor:
+        if number_to_factor % possible_factor == 0:
         
             while number_to_factor % possible_factor == 0:
                 times_appearing += 1
@@ -55,8 +56,9 @@ def prime_factorization(number, factors):
                 
             possible_factors = [factor for factor in possible_factors if factor % possible_factor != 0]
             return prime_factorization(number_to_factor, factors)
-
-
+    
+    factors.append(number_to_factor) # number is prime
+    
     return factors
             
 def print_smiles(num_smiles):
@@ -72,5 +74,10 @@ print print_smiles(1000)
 print print_smiles(997)
 print print_smiles(995)
 prime_factorization(995, [])
-    
+
+# I tried to simulate a competition environment, so I used a naive sieve method for the prime factorization method.
+# I also was unsure if it was within the rules to use the math module, so I used a while loop to calculate
+# the logarithm and used a very rough linear approximation to square root. If speed were an issue (which it is not
+# with such small size inputs) I would implement a sieve to compute the prime numbers within the range and then
+# not do this with every computation.
 
